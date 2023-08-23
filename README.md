@@ -56,23 +56,13 @@ git clone https://github.com/smarunich/tetrate-service-express-sandbox.git
 ```json
 {
     "name_prefix": "<YOUR UNIQUE PREFIX NAME TO BE CREATED>",
-    "tetrate": {
-        "version": "1.7.0+tse",
-        "image_sync_username": "<TETRATE_REPO_USERNAME>",
-        "image_sync_apikey": "<TETRATE_REPO_APIKEY>"
-    },
     "k8s_clusters": {
         "aws": [
         {
             "name": "demo1",
             "region": "us-west-1",
-            "version": "1.24"
-        },
-        {
-            "name": "demo2",
-            "region": "us-west-1",
-            "version": "1.24"
-        } 
+            "version": "1.26"
+        }
     ]
     }
 }
@@ -95,29 +85,11 @@ make all
 # Setup underlying clusters, registries, jumpboxes
 make deploy_infra
 
-# Deploy Tetrate Service Express Management Plane
-make deploy_tetrate_managementplane
-
-# Onboard deployed clusters
-make deploy_tetrate_controlplane
-
 # Describe the complete demo stack
 make describe_demo
 
 # Deploy the demo application
 make demo_01-deploy-application
-
-# Lunch the mTLS demo
-make demo_02-mtls
-
-# Lunch the Zero Trust demo
-make demo_03-zero-trust
-
-# Lunch the Service Publishing demo
-make demo_04-publish-service
-
-# Lunch the API Publishing demo
-make demo_05-publish-api
 
 # Fast-forward - Setup all demos
 make demo_all
@@ -159,7 +131,6 @@ For a quicker destroy for development purposes, you can:
 | Directory | Description |
 | --------- | ----------- |
 | [infra](infra) | Infrastructure deployment modules. Provisioning of networking, jumpboxes and k8s clusters. |
-| [tetrate](tetrate) | Tetrate terraform modules to deploy Tetrate Service Express. |
 | [addons](addons) | Terraform modules to deploy addons such as FluxCD, etc. |
 | [modules](modules) | Generic and reusable terraform modules. These should not contain any specific configuration. |
 | [make](make) | Makefile helpers. |
