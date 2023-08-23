@@ -20,20 +20,6 @@ The `Makefile` in this directory provides ability to fast-forward to any point o
          aws-load-balancer-controller[make deploy_addons_aws-load-balancer-controller] -->
          fluxcd[make deploy_addons_fluxcd]
       end
-      infra --> tetrate[make deploy_tetrate]
-      subgraph tetrate[make deploy_tetrate]
-         tetrate_managementplane[make deploy_tetrate_managementplane] -->
-         tetrate_controlplane[make deploy_tetrate_controlplane]
-      end
-      tetrate --> apps[make demo_all]
-      subgraph apps[make demo_all]
-         deploy-application[make demo_01-deploy-application] -->
-         mtls[make demo_02-mtls] -->
-         zero-trust[make demo_03-zero-trust] -->
-         publish-service[make demo_04-publish-service] -->
-         publish-api[make demo_05-publish-api]
-      end
-      apps --> describe[make describe_demo]
 ```
 
 # Getting Started
@@ -48,7 +34,7 @@ The `Makefile` in this directory provides ability to fast-forward to any point o
 1. Clone the repo
 
 ```bash
-git clone https://github.com/smarunich/tetrate-service-express-sandbox.git
+git clone https://github.com/smarunich/tetrate-istio-sandbox.git
 ```
 
 2. Copy `terraform.tfvars.json.sample` to the root directory as `terraform.tfvars.json`
