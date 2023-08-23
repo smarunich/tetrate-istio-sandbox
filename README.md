@@ -1,6 +1,6 @@
-# Tetrate Service Express Sandbox
+# Tetrate Istio Sandbox
 
-### Deploy Tetrate Service Express Demo Environment on AWS Elastic Kubernetes Service using Terraform
+### Deploy Istio demo environments on Elastic Kubernetes Service (EKS) using Terraform
 
 ---
 
