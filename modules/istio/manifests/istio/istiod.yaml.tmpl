@@ -1,0 +1,20 @@
+global:
+  tag: ${istio_flavor}
+  istioNamespace: istio-system
+meshConfig:
+  discoverySelectors:
+  - matchLabels:
+      istio.io/rev: ${istio_revision}
+  %{ if istio_revision == "default" }
+  - matchLabels:
+      istio-injection: enabled
+  %{ endif }
+%{ if istio_revision != "default"}revision: ${istio_revision}%{ endif }
+pilot:
+  env:
+    ENABLE_ENHANCED_RESOURCE_SCOPING: true
+    AUTO_RELOAD_PLUGIN_CERTS: true
+%{ if istio_cni }
+istio_cni:
+  enabled: ${istio_cni}
+%{ endif }

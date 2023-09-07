@@ -19,6 +19,10 @@ deploy_addons: deploy_addons_load-balancer-controller deploy_addons_fluxcd deplo
 deploy_addons_%:
 	@/bin/sh -c './make/addons.sh deploy_$*'
 
+.PHONY: deploy_istio
+deploy_tetrate: deploy_istio ## Deploy Istio
+deploy_istio: 
+	@/bin/sh -c './make/istio.sh deploy'
 
 .PHONY: describe
 describe: describe_demo ## Describe the complete demo stack
